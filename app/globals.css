@@ -1,0 +1,390 @@
+@import "tailwindcss";
+
+/* ===========================
+   KBT Neshama Learning
+   Design Tokens & Global Styles
+   =========================== */
+
+:root {
+  /* Primary Palette: Warm Cream & Beige (matching flyer) */
+  --color-bg-primary: #F5F0E8;
+  --color-bg-secondary: #EDE8DF;
+  --color-bg-tertiary: #E8E2D8;
+  --color-bg-light: #FAF8F4;
+  --color-bg-cream: #F0EBE1;
+  --color-bg-white: #FDFCFA;
+
+  /* Gold Accent System */
+  --color-gold: #B8943E;
+  --color-gold-light: #C9A962;
+  --color-gold-dark: #96782E;
+  --color-gold-muted: rgba(184, 148, 62, 0.12);
+  --color-gold-border: rgba(184, 148, 62, 0.35);
+
+  /* Text Colors */
+  --color-text-primary: #2C2418;
+  --color-text-secondary: #5A4E3C;
+  --color-text-muted: #8C7E6A;
+  --color-text-dark: #2C2418;
+  --color-text-dark-secondary: #5A4E3C;
+
+  /* Functional */
+  --color-success: #4CAF50;
+  --color-error: #C0392B;
+  --color-error-bg: rgba(192, 57, 43, 0.08);
+
+  /* Typography */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --section-padding: 100px;
+  --section-padding-mobile: 60px;
+}
+
+@theme inline {
+  --color-background: var(--color-bg-primary);
+  --color-foreground: var(--color-text-primary);
+  --font-sans: var(--font-body);
+}
+
+/* ===========================
+   Geometric Pattern Background (matching flyer)
+   =========================== */
+
+.bg-pattern {
+  position: relative;
+}
+
+.bg-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(45deg, var(--color-gold) 1px, transparent 1px),
+    linear-gradient(-45deg, var(--color-gold) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ===========================
+   Base Styles
+   =========================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(45deg, rgba(184, 148, 62, 0.03) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(184, 148, 62, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+a {
+  color: var(--color-gold-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+/* ===========================
+   Layout Utilities
+   =========================== */
+
+.section {
+  padding: var(--section-padding) 0;
+  position: relative;
+}
+
+.section--light {
+  background: var(--color-bg-white);
+  color: var(--color-text-dark);
+}
+
+.section--light h2,
+.section--light h3 {
+  color: var(--color-text-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container--narrow {
+  max-width: 800px;
+}
+
+/* ===========================
+   Gold Divider
+   =========================== */
+
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+  margin: 0 auto;
+}
+
+.gold-divider--wide {
+  width: 120px;
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+  color: #ffffff;
+}
+
+.btn--gold:hover {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(184, 148, 62, 0.25);
+  color: #ffffff;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-gold-border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  transform: translateY(-1px);
+}
+
+.btn--dark {
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border: 1px solid transparent;
+}
+
+.btn--dark:hover {
+  background: var(--color-text-secondary);
+}
+
+.btn--lg {
+  padding: 18px 40px;
+  font-size: 14px;
+}
+
+.btn--sm {
+  padding: 10px 24px;
+  font-size: 12px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===========================
+   Form Styles
+   =========================== */
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-gold-border);
+  border-radius: 2px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px var(--color-gold-muted);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23999' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-select option {
+  background: var(--color-bg-white);
+  color: var(--color-text-primary);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-error {
+  font-size: 13px;
+  color: var(--color-error);
+  margin-top: 6px;
+}
+
+.form-help {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+/* ===========================
+   Card Styles
+   =========================== */
+
+.card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-gold-border);
+  border-radius: 4px;
+  padding: 40px 32px;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(184, 148, 62, 0.1);
+}
+
+/* ===========================
+   Yahrzeit Candle Animation
+   =========================== */
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scaleY(1) scaleX(1) rotate(0deg); }
+  10% { opacity: 0.92; transform: scaleY(1.03) scaleX(0.97) rotate(-1deg); }
+  20% { opacity: 1; transform: scaleY(0.96) scaleX(1.02) rotate(0.5deg); }
+  30% { opacity: 0.88; transform: scaleY(1.04) scaleX(0.98) rotate(-0.5deg); }
+  40% { opacity: 0.95; transform: scaleY(0.97) scaleX(1.01) rotate(1deg); }
+  50% { opacity: 0.9; transform: scaleY(1.02) scaleX(0.99) rotate(-0.3deg); }
+  60% { opacity: 1; transform: scaleY(0.98) scaleX(1.01) rotate(0.8deg); }
+  70% { opacity: 0.87; transform: scaleY(1.05) scaleX(0.97) rotate(-0.7deg); }
+  80% { opacity: 0.95; transform: scaleY(0.99) scaleX(1.02) rotate(0.3deg); }
+  90% { opacity: 0.91; transform: scaleY(1.01) scaleX(0.98) rotate(-0.5deg); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; }
+  25% { opacity: 0.45; }
+  50% { opacity: 0.25; }
+  75% { opacity: 0.4; }
+}
+
+.candle-glow {
+  animation: flicker 2.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.candle-glow-ambient {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ===========================
+   Scroll Indicator
+   =========================== */
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ===========================
+   Loading Spinner
+   =========================== */
+
+@keyframes kbt-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-padding-mobile) 0;
+  }
+
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.6rem !important; }
+}
