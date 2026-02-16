@@ -75,7 +75,7 @@ export default function RootLayout({
       </head>
       <body className={`${playfair.variable} ${dmSans.variable} antialiased`}>
         <Navigation />
-        <main>{children}</main>
+        <main className="pb-16">{children}</main>
         <Footer />
       </body>
     </html>

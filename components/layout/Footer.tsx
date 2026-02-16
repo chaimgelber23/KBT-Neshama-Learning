@@ -14,7 +14,7 @@ export default function Footer() {
       {/* Gold accent line at top */}
       <div className="h-[2px] bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent" />
 
-      <div className="container py-16">
+      <div className="container py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Left Column: Brand */}
           <div>
@@ -102,7 +102,7 @@ export default function Footer() {
 
       {/* Copyright Bar */}
       <div className="border-t border-[var(--color-gold-border)]">
-        <div className="container py-6 flex items-center justify-center">
+        <div className="container py-8 flex items-center justify-center">
           <p
             className="text-xs text-[var(--color-text-muted)] tracking-wide"
             style={{ fontFamily: 'var(--font-body)' }}
