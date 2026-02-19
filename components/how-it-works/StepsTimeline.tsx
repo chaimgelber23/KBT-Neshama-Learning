@@ -20,7 +20,7 @@ const STEPS = [
     number: 3,
     title: 'Make a Payment',
     description:
-      'Complete your payment through our secure payment link to confirm your dedication.',
+      'Complete your payment of $360 (suggested donation) through our secure payment link to confirm your dedication.',
   },
   {
     number: 4,

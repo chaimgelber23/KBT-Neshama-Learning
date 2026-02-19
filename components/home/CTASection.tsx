@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { FadeUp } from '@/components/ui/motion';
 import GoldDivider from '@/components/ui/GoldDivider';
-import { PAYMENT_URL } from '@/lib/constants';
+import { PAYMENT_URL, SUGGESTED_DONATION } from '@/lib/constants';
 
 /**
  * CTASection — Final call-to-action banner encouraging visitors to sign up
@@ -28,7 +28,7 @@ export default function CTASection() {
           </h2>
 
           <p
-            className="mx-auto mt-5 mb-10 max-w-xl leading-relaxed"
+            className="mx-auto mt-5 mb-6 max-w-xl leading-relaxed"
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: '16px',
@@ -37,6 +37,25 @@ export default function CTASection() {
           >
             Sign up today and bring an eternal merit to the neshamah of your
             loved ones
+          </p>
+
+          <p
+            className="mx-auto mb-10 text-sm"
+            style={{
+              fontFamily: 'var(--font-body)',
+              color: 'var(--color-text-muted)',
+            }}
+          >
+            Suggested donation:{' '}
+            <span
+              style={{
+                color: 'var(--color-gold-dark)',
+                fontWeight: 600,
+              }}
+            >
+              ${SUGGESTED_DONATION}
+            </span>{' '}
+            per yahrtzeit
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

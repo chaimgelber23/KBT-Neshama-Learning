@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { FadeIn } from '@/components/ui/motion';
 import GoldDivider from '@/components/ui/GoldDivider';
-import { PAYMENT_URL } from '@/lib/constants';
+import { PAYMENT_URL, SUGGESTED_DONATION } from '@/lib/constants';
 
 interface FormSuccessProps {
   /** Name of the person who signed up */
@@ -78,6 +78,15 @@ export default function FormSuccess({ name, niftarName, onReset }: FormSuccessPr
 
       {/* Payment CTA */}
       <div className="mt-8">
+        <p
+          className="mb-4 text-sm"
+          style={{
+            fontFamily: 'var(--font-body)',
+            color: 'var(--color-text-muted)',
+          }}
+        >
+          Suggested donation: <strong style={{ color: 'var(--color-gold-dark)' }}>${SUGGESTED_DONATION}</strong> per yahrtzeit
+        </p>
         <a
           href={PAYMENT_URL}
           className="btn btn--gold btn--lg"

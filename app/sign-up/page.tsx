@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { FadeUp } from '@/components/ui/motion';
 import SignUpForm from '@/components/sign-up/SignUpForm';
+import { SUGGESTED_DONATION } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Sign Up',
@@ -27,6 +29,41 @@ export default function SignUpPage() {
             subtitle="Fill out the form below to dedicate Torah learning in memory of your loved one"
             wideDivider
           />
+        </div>
+      </section>
+
+      {/* Pricing note */}
+      <section style={{ background: 'var(--color-bg-cream)' }}>
+        <div className="container container--narrow py-8">
+          <FadeUp>
+            <div
+              className="rounded-lg p-6 text-center"
+              style={{
+                background: 'var(--color-bg-white)',
+                border: '1px solid var(--color-gold-border)',
+              }}
+            >
+              <p
+                className="text-sm leading-relaxed"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  color: 'var(--color-text-secondary)',
+                }}
+              >
+                Suggested donation:{' '}
+                <span
+                  className="text-lg font-semibold"
+                  style={{ color: 'var(--color-gold-dark)' }}
+                >
+                  ${SUGGESTED_DONATION}
+                </span>{' '}
+                per yahrtzeit.{' '}
+                <span style={{ color: 'var(--color-text-muted)' }}>
+                  Payment is completed after sign-up via our secure payment link.
+                </span>
+              </p>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

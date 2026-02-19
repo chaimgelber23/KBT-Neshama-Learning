@@ -20,6 +20,7 @@ export const PAYMENT_URL = process.env.NEXT_PUBLIC_PAYMENT_URL || '#';
 // Navigation links
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
+  { label: 'What We Learn', href: '/what-we-learn' },
   { label: 'How It Works', href: '/how-it-works' },
   { label: 'Sign Up', href: '/sign-up' },
   { label: 'About', href: '/about' },

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import GoldDivider from '@/components/ui/GoldDivider';
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
@@ -176,11 +177,11 @@ export default function WhatWeLearn() {
           ))}
         </StaggerContainer>
 
-        {/* Bottom note */}
+        {/* Bottom note + link */}
         <FadeUp className="text-center mt-14">
           <GoldDivider className="mb-8" />
           <p
-            className="mx-auto max-w-xl text-sm leading-relaxed italic"
+            className="mx-auto max-w-xl text-sm leading-relaxed italic mb-6"
             style={{
               fontFamily: 'var(--font-display)',
               color: 'var(--color-text-muted)',
@@ -189,6 +190,17 @@ export default function WhatWeLearn() {
             As we learn for only one person&apos;s yahrtzeit each day, you can reserve
             your date far in advance to make sure it will be reserved for your loved one.
           </p>
+          <Link
+            href="/what-we-learn"
+            className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300"
+            style={{
+              fontFamily: 'var(--font-body)',
+              color: 'var(--color-gold-dark)',
+            }}
+          >
+            Learn more about each limud
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
         </FadeUp>
       </div>
     </section>

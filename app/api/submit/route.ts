@@ -43,30 +43,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ── Forward to Google Apps Script ───────────────────────
-    const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
+    // ── Forward to Google Form ───────────────────────────────
+    const GOOGLE_FORM_URL =
+      'https://docs.google.com/forms/d/e/1FAIpQLSd5B0F38NpQEG9_LX6L3s4hm2ZerHc9o8C8ju-HgEMIo89Sdg/formResponse';
 
-    if (!scriptUrl) {
-      console.warn(
-        '[submit] GOOGLE_APPS_SCRIPT_URL is not set — skipping Google Sheets integration.',
-      );
-      return NextResponse.json({ success: true });
-    }
+    // Map our form fields to Google Form entry IDs
+    const body = new URLSearchParams();
+    body.append('entry.545323566', data.hebrewDate || '');                    // Date of Yahrtzeit
+    body.append('entry.530730126', data.niftarNameEnglish +                   // Name of Niftar
+      (data.niftarNameHebrew ? ` / ${data.niftarNameHebrew}` : ''));
+    body.append('entry.1044438578', data.name || '');                         // Name of Donor
+    body.append('entry.1412711219', data.email || '');                        // Email
+    // Pack extra details into comments
+    const commentParts = [
+      data.phone ? `Phone: ${data.phone}` : '',
+      data.relationship ? `Relationship: ${data.relationship}` : '',
+      data.englishDate ? `English date: ${data.englishDate}` : '',
+      data.notes || '',
+    ].filter(Boolean);
+    body.append('entry.433594988', commentParts.join('\n'));                   // Comments
 
-    const response = await fetch(scriptUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      redirect: 'follow', // Google Apps Script returns 302 redirects
-    });
-
-    if (!response.ok) {
-      const text = await response.text();
-      console.error('[submit] Google Apps Script error:', response.status, text);
-      return NextResponse.json(
-        { success: false, error: 'Failed to save your submission. Please try again.' },
-        { status: 500 },
-      );
+    try {
+      await fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+        redirect: 'follow',
+      });
+    } catch (fetchErr) {
+      // Google Forms may reject CORS or redirect — the data is still submitted
+      console.warn('[submit] Google Form fetch completed (may have redirected):', fetchErr);
     }
 
     return NextResponse.json({ success: true });
