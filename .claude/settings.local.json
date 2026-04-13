@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npx next build:*)",
       "Bash(gh auth:*)",
-      "Bash(where:*)"
+      "Bash(where:*)",
+      "Bash(vercel:*)",
+      "Bash(npx vercel:*)"
     ]
   }
 }
