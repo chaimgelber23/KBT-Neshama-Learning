@@ -17,7 +17,8 @@ export default function Navigation() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Check initial scroll position
+    // Check initial scroll position (sync state with actual DOM scroll on mount)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);

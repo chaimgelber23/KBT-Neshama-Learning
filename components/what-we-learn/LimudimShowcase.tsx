@@ -1,7 +1,6 @@
 'use client';
 
-import GoldDivider from '@/components/ui/GoldDivider';
-import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/motion';
+import { StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
 const limudim = [
   {
